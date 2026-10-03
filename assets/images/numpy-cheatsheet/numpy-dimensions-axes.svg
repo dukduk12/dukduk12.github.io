@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">NumPy dimensions, axes, and shape tuples from 0D to 6D</title>
+  <desc id="desc">A visual ladder from a scalar through vectors, matrices, stacked matrices, batches, time series batches, and experiment batches. It explains that higher dimensions are read as named axes in a shape tuple.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081426"/>
+      <stop offset="1" stop-color="#102848"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17385f"/>
+      <stop offset="1" stop-color="#102c4e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020817" flood-opacity="0.45"/>
+    </filter>
+    <style>
+      .title{font:700 42px system-ui,sans-serif;fill:#f7fbff}.sub{font:400 21px system-ui,sans-serif;fill:#b9cbe0}
+      .h{font:700 25px system-ui,sans-serif;fill:#8fe3ff}.shape{font:600 20px ui-monospace,monospace;fill:#ffe08a}
+      .label{font:500 17px system-ui,sans-serif;fill:#dce9f7}.tiny{font:500 14px system-ui,sans-serif;fill:#abc3da}
+      .cell{fill:#1f6fb2;stroke:#8fe3ff;stroke-width:2}.cell2{fill:#7656d8;stroke:#c8b8ff;stroke-width:2}
+      .line{stroke:#7fc9ee;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7fc9ee"/></marker>
+  </defs>
+  <rect width="1600" height="1000" rx="28" fill="url(#bg)"/>
+  <text x="70" y="72" class="title">NumPy dimensions are named axes in a shape tuple</text>
+  <text x="70" y="108" class="sub">0D → 6D+: stop trying to draw extra space; read the address from left to right.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="150" width="340" height="210" rx="22" fill="url(#card)"/>
+    <text x="85" y="190" class="h">0D · scalar</text><text x="85" y="224" class="shape">shape = ()</text>
+    <circle cx="230" cy="285" r="34" fill="#ffb454"/><text x="219" y="293" class="label">7</text>
+
+    <rect x="430" y="150" width="500" height="210" rx="22" fill="url(#card)"/>
+    <text x="455" y="190" class="h">1D · one axis</text><text x="455" y="224" class="shape">shape = (4,)</text>
+    <g transform="translate(540 260)"><rect class="cell" width="68" height="58"/><rect class="cell" x="68" width="68" height="58"/><rect class="cell" x="136" width="68" height="58"/><rect class="cell" x="204" width="68" height="58"/></g>
+    <path d="M540 332 H812" class="line"/><text x="642" y="353" class="tiny">axis 0</text>
+
+    <rect x="960" y="150" width="580" height="210" rx="22" fill="url(#card)"/>
+    <text x="985" y="190" class="h">2D · rows × columns</text><text x="985" y="224" class="shape">shape = (2, 3)</text>
+    <g transform="translate(1120 245)"><rect class="cell" width="70" height="48"/><rect class="cell" x="70" width="70" height="48"/><rect class="cell" x="140" width="70" height="48"/><rect class="cell2" y="48" width="70" height="48"/><rect class="cell2" x="70" y="48" width="70" height="48"/><rect class="cell2" x="140" y="48" width="70" height="48"/></g>
+    <path d="M1100 245 V341" class="line"/><text x="1012" y="300" class="tiny">axis 0 · rows</text>
+    <path d="M1120 350 H1330" class="line"/><text x="1340" y="355" class="tiny">axis 1 · columns</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="395" width="460" height="245" rx="22" fill="url(#card)"/>
+    <text x="85" y="435" class="h">3D · layers × rows × columns</text><text x="85" y="470" class="shape">shape = (3, 2, 4)</text>
+    <g transform="translate(175 510)">
+      <g transform="translate(48 -32)" opacity=".45"><rect class="cell2" width="220" height="90"/><path d="M55 0V90M110 0V90M165 0V90M0 45H220" stroke="#c8b8ff" stroke-width="2"/></g>
+      <g transform="translate(24 -16)" opacity=".7"><rect class="cell2" width="220" height="90"/><path d="M55 0V90M110 0V90M165 0V90M0 45H220" stroke="#c8b8ff" stroke-width="2"/></g>
+      <rect class="cell" width="220" height="90"/><path d="M55 0V90M110 0V90M165 0V90M0 45H220" stroke="#8fe3ff" stroke-width="2"/>
+    </g>
+    <text x="85" y="620" class="tiny">index: a[layer, row, column]</text>
+
+    <rect x="550" y="395" width="480" height="245" rx="22" fill="url(#card)"/>
+    <text x="575" y="435" class="h">4D · batch × channel × row × col</text><text x="575" y="470" class="shape">shape = (32, 3, 224, 224)</text>
+    <g transform="translate(625 505)"><rect x="0" y="0" width="118" height="88" rx="8" fill="#e15f77"/><rect x="24" y="14" width="118" height="88" rx="8" fill="#56b779"/><rect x="48" y="28" width="118" height="88" rx="8" fill="#497fd1"/></g>
+    <g transform="translate(810 505)" opacity=".55"><rect x="0" y="0" width="118" height="88" rx="8" fill="#e15f77"/><rect x="24" y="14" width="118" height="88" rx="8" fill="#56b779"/><rect x="48" y="28" width="118" height="88" rx="8" fill="#497fd1"/></g>
+    <text x="575" y="620" class="tiny">index: images[batch, channel, row, col]</text>
+
+    <rect x="1060" y="395" width="480" height="245" rx="22" fill="url(#card)"/>
+    <text x="1085" y="435" class="h">5D · time × batch × channel × row × col</text><text x="1085" y="470" class="shape">shape = (10, 32, 3, 224, 224)</text>
+    <g transform="translate(1110 510)"><rect width="92" height="70" rx="7" fill="#356fa8"/><rect x="45" y="15" width="92" height="70" rx="7" fill="#477fc0"/><rect x="90" y="30" width="92" height="70" rx="7" fill="#5d91d3"/><rect x="135" y="45" width="92" height="70" rx="7" fill="#75a7e3"/></g>
+    <path d="M1110 600 H1370" class="line"/><text x="1180" y="622" class="tiny">time axis</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="675" width="700" height="250" rx="22" fill="url(#card)"/>
+    <text x="85" y="718" class="h">6D+ · keep naming axes</text>
+    <text x="85" y="755" class="shape">(experiment, time, batch, channel, row, column)</text>
+    <g transform="translate(90 792)">
+      <rect width="94" height="74" rx="10" fill="#25669f"/><rect x="110" width="94" height="74" rx="10" fill="#3579b5"/><rect x="220" width="94" height="74" rx="10" fill="#478bc6"/><rect x="350" width="94" height="74" rx="10" fill="#7458c7"/><rect x="460" width="94" height="74" rx="10" fill="#8d6cdf"/>
+      <text x="20" y="101" class="tiny">exp 0</text><text x="132" y="101" class="tiny">exp 1</text><text x="242" y="101" class="tiny">exp 2</text>
+    </g>
+
+    <rect x="790" y="675" width="750" height="250" rx="22" fill="url(#card)"/>
+    <text x="820" y="718" class="h">A shape tuple is an indexing contract</text>
+    <text x="820" y="765" class="label">array[i₀, i₁, i₂, i₃, i₄, i₅]</text>
+    <text x="820" y="804" class="label">         ↓   ↓   ↓   ↓   ↓   ↓</text>
+    <text x="820" y="843" class="label">       exp time batch ch row col</text>
+    <text x="820" y="886" class="sub">The last two axes are often row and column—not always.</text>
+  </g>
+</svg>
